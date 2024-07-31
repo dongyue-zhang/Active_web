@@ -1,0 +1,21 @@
+<div role="listitem" class="list_item" #list_item>
+    <a (click)="onRedirect()">
+        <div class="flex space-between">
+            <div>
+                {{facility.title}}
+            </div>
+        </div>
+        <div class="flex space-between secondary-text">
+            <div>
+                {{facility.address.street}}
+            </div>
+            @if (showDistance) {
+            <div>
+                {{facility.distance | distance}} km
+            </div>
+            }
+
+        </div>
+    </a>
+</div>
+<mat-divider></mat-divider>

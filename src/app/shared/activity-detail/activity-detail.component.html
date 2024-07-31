@@ -1,0 +1,72 @@
+<div class="container">
+    @if (activity) {
+    <h5 class="page_title category_title">{{activity.category}} • {{activity.title}}</h5>
+    <h1 class="page_title">{{activity.title}}</h1>
+    <div class="flex available_updated">
+        <div class="is_available">{{activity.isAvailable? 'Available' : 'Unavailable'}}</div>
+        <div class="updated">
+            <mat-icon>cached</mat-icon>
+            {{'Updated ' + calculateUpdatedTime(activity.lastUpdated)}}
+        </div>
+    </div>
+
+    <div class="contact_container">
+        <div class="contact">
+            <div>
+                <mat-icon>access_time</mat-icon>
+            </div>
+            <div class="contact_text">
+                {{activity.startTime | date: "EEEE, MMM dd • h:mm a"}} - {{activity.endTime | date: "h:mm a"}}
+            </div>
+        </div>
+        <div class="contact">
+            <div>
+                <mat-icon>domain</mat-icon>
+            </div>
+            <div class="contact_text">
+                {{activity.facility.title}}
+            </div>
+        </div>
+
+        <div class="loaction_info">
+            <div class="contact">
+                <mat-icon>
+                    place
+                </mat-icon>
+                <div class="contact_text">
+                    {{activity.facility.address.street}}
+                </div>
+            </div>
+
+            @if (duration) {
+            <div class="contact">
+                <div>
+                    <mat-icon>
+                        directions_car
+                    </mat-icon>
+                </div>
+                <div class="contact_text">
+                    {{duration}}
+                </div>
+            </div>
+            }
+        </div>
+
+        <div #map>
+            <app-map [origin]="direction.origin" [destination]="direction.destination"
+                (duration)="setDuration($event)"></app-map>
+        </div>
+
+        <div class="reserve_button">
+            <a href="{{activity.reservationURL}}" target="_blank">
+                Reserve a Spot
+            </a>
+        </div>
+    </div>
+    }
+
+    @else {
+    <h2 class="page_title no_available_activities">Loading...</h2>
+    }
+
+</div>

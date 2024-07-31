@@ -1,0 +1,19 @@
+<nav>
+    <mat-toolbar>
+        <span class="logo">Active</span>
+        <div class="nav_button_container">
+
+            <button mat-button (click)="toActivities($event)" #activitiesButton class="nav_button">
+                <mat-icon class="nav_icon">directions_run</mat-icon>
+                Activities
+            </button>
+
+        </div>
+        <div class="nav_button_container">
+            <button mat-button (click)="toFacilities($event)" #facilitiesButton class="nav_button">
+                <mat-icon class="nav_icon">domain</mat-icon>
+                Facilities
+            </button>
+        </div>
+    </mat-toolbar>
+</nav>

@@ -1,0 +1,26 @@
+.list_item {
+    padding: 15px 15px;
+    line-height: 1.5rem;
+}
+
+.secondary-text {
+    color: var(--secodary-text-color);
+    font-size: smaller;
+}
+
+mat-icon {
+    font-size: 1rem;
+    align-self: center;
+    height: fit-content;
+    width: fit-content;
+    color: green;
+}
+
+.list_item:hover {
+    background-color: var(--accent-color-contrast);
+    cursor: pointer;
+}
+
+.focused {
+    background-color: var(--accent-color-contrast);
+}

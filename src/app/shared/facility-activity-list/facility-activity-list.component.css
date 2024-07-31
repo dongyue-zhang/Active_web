@@ -1,0 +1,10 @@
+.mat-grid-tile-content {
+    margin-top: 0;
+}
+
+.no_more_times {
+    color: var(--accent-color);
+    margin: 200px auto;
+    width: fit-content;
+    height: 100%;
+}

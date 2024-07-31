@@ -1,0 +1,13 @@
+.mat-grid-title-content {
+    position: sticky;
+    top: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+.left_container {
+    display: block;
+    width: 100%;
+}

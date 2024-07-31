@@ -1,0 +1,107 @@
+@if (page_title) {
+<div class="container">
+    <h1 class="page_title">{{page_title}}</h1>
+    <div class="sorting_buttons" #sorting_buttons>
+        <div class="button_container">
+            <button mat-button [class.focused]="sortBy === 'distance' || 'time'" value="sort"
+                [matMenuTriggerFor]="sortingMenu" matMenuPositionX="after" matMenuPositionY="below">Sort:
+                {{sortBy}}
+            </button>
+            <mat-menu #sortingMenu="matMenu">
+                <button mat-menu-item [class.focused]="sortBy === 'distance'" (click)="onSorting('distance')"
+                    [disabled]="!showDistance">
+                    Sort: Distance
+                </button>
+                <button mat-menu-item [class.focused]="sortBy === 'time'" (click)="onSorting('time')">
+                    Sort:Time
+                </button>
+            </mat-menu>
+        </div>
+        <div class="button_container">
+            <button mat-button value="day" [class.focused]="dayFiltered"
+                [matMenuTriggerFor]="dayMenu">{{dayFiltered?dayFiltered:'Day'}}
+            </button>
+            <mat-menu #dayMenu="matMenu">
+                @for (day of daysForFiltering; track $index) {
+                <button mat-menu-item (click)="onFilteringDay(day)"
+                    [class.focused]="dayFiltered === day">{{day}}</button>
+                }
+
+                <button mat-menu-item class="cancel_button" (click)="onCancelFilteringDay()"
+                    [class.hidden]="!dayFiltered">Clear Selection</button>
+            </mat-menu>
+        </div>
+        @if (dayFiltered) {
+        <div class="button_container">
+            <button mat-button value="time" [class.focused]="timeFiltered"
+                [matMenuTriggerFor]="timeMenu">{{timeFiltered? (timeFiltered | date: 'shortTime'):'Time'}}
+            </button>
+            <mat-menu #timeMenu="matMenu">
+                @for (time of timeForFiltering; track time) {
+                <button type="button" mat-menu-item (click)="onFilteringTime(time)"
+                    [class.focused]="timeFiltered === time">
+                    {{time | date: 'shortTime'}}
+                </button>
+                }
+                <button mat-menu-item class="cancel_button" (click)="onCancelFilteringTime()"
+                    [class.hidden]="!timeFiltered">Clear Selection</button>
+            </mat-menu>
+
+
+        </div>
+        }
+
+        <div class="button_container">
+            <button mat-button value="facility" [matMenuTriggerFor]="facilityMenu" [class.focused]="facilityFiltered">
+                {{facilityFiltered? facilityFiltered :
+                'Facility'}}
+            </button>
+
+            <mat-menu #facilityMenu>
+                @for (facility of facilitiesForFiltering; track $index;) {
+                <button mat-menu-item [value]="facility" [class.focused]="facilityFiltered === facility"
+                    (click)="onFilteringFacility(facility)">{{facility}}</button>
+                }
+                <button mat-menu-item class="cancel_button" (click)="onCancelFilteringFacility()"
+                    [class.hidden]="!facilityFiltered">Clear Selection</button>
+            </mat-menu>
+        </div>
+        <div class="button_container">
+            <button mat-button value="available" (click)="toggleSelectAvailable()"
+                [class.focused]="selectAvailable">Available</button>
+        </div>
+
+    </div>
+    <mat-divider></mat-divider>
+</div>
+@if (!activitiesOrigin && !activities){
+<div class="page_title no_available_activities">
+    <h2>Loading...</h2>
+</div>
+}
+
+@else if (activities && activities.length !== 0) {
+<div class="inifinite_scroll_container">
+    <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [scrollWindow]="false"
+        class="inifinite_scroll">
+        <mat-divider></mat-divider>
+        @for (activity of activities; track activity.id){
+        <app-activity-list-item [activity]="activity" [url]="getUrl(activity.id)"></app-activity-list-item>
+        }
+    </div>
+
+</div>
+}
+
+@else if (noMoreTimes) {
+<div class="page_title no_available_activities">
+    <h2>No more available times</h2>
+</div>
+}
+}
+
+@else {
+<div class="page_title no_available_activities">
+    <h2>No more available times</h2>
+</div>
+}

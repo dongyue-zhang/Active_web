@@ -1,0 +1,17 @@
+<!-- <mat-grid-list [cols]="cols" rowHeight="100vh">
+    <mat-grid-tile [colspan]="left_cols" rowspan="1" class="desktop"> -->
+<div class="component_container">
+    <div class="left_container">
+        <app-category-list [cols]="left_cols" style="width: 500px;"></app-category-list>
+    </div>
+    <!-- 
+        </mat-grid-tile>
+        <mat-grid-tile colspan="4" rowspan="1" class="phone"> -->
+    <div class="right_container">
+        <app-type-list [cols]="right_cols"></app-type-list>
+    </div>
+</div>
+
+
+<!-- </mat-grid-tile>
+</mat-grid-list> -->

@@ -1,0 +1,47 @@
+<div class="header-container">
+    <div class="search-field" [formGroup]="searchForm" (ngSumit)="onSubmit()">
+        <div class="button-container">
+            <!-- <button type="submit" class="submit-button"> -->
+            <mat-icon>search</mat-icon>
+            <!-- </button> -->
+        </div>
+        <div class="search-input-container">
+            <input type="text" #searchFiled [placeholder]="placeHolder" formControlName="search" (focus)="onFocus()">
+            <!-- (blur)="onCancel()"> -->
+        </div>
+        <div class="cancel-button-container">
+            @if ( showMenu) {
+            <button aria-label="Clear" (click)="onCancel()">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </div>
+
+    </div>
+
+    @if (showMenu) {
+    <div class="result-list-container">
+
+        <mat-list class="result-list">
+            @if (searchResults) {
+            @for (result of searchResults; track result.id) {
+            <mat-divider></mat-divider>
+            <mat-list-item mat-menu-item>
+                <button (click)="onSearchResult(result)">
+                    {{result.title}}
+                </button>
+            </mat-list-item>
+            }
+            }
+            @else {
+            <mat-list-item>
+                no results
+            </mat-list-item>
+            }
+        </mat-list>
+
+
+    </div>
+
+    }
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="page_title">Recreation Facilities</h1>
+    <app-search-bar [placeHolder]="'Search Facilities'" [searchFor]="'facility'"
+        style="display: block; position: relative;"></app-search-bar>
+    <div class="sorting_container">
+        <label for="">Sort By:</label>
+        <button mat-button type="button" (click)="sortByDistance()" class="sorting_buttons"
+            [class.focused]="sortBy === 'distance'" [disabled]="!showDistance">
+            Distance
+        </button>
+        <button mat-button type="button" (click)="sortByAlphabet()" class="sorting_buttons"
+            [class.focused]="sortBy === 'title'">
+            Alphabetcally
+        </button>
+    </div>
+</div>
+<div class="div">
+    <div itemSize="50" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll($event)" [scrollWindow]="false" [infiniteScrollContainer]="'.div'" [fromRoot]="true"
+        class="inifinite_scroll" #infinite>
+        <div class="infinite_scroll_inner_container">
+            <mat-divider></mat-divider>
+            @for (facility of facilities; track $index){
+            <app-facility-list-item [facility]="facility" [attr.id]="facility.id" [id]="facility.id"
+                [title]="facility.title" [url]="getUrl(facility.id)">
+            </app-facility-list-item>
+            }
+        </div>
+    </div>
+
+</div>

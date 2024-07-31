@@ -1,0 +1,18 @@
+.list_item {
+    padding: 15px 15px;
+    line-height: 1.5rem;
+}
+
+.list_item:hover {
+    background-color: var(--accent-color-contrast);
+    cursor: pointer;
+}
+
+.secondary-text {
+    color: var(--secodary-text-color);
+    font-size: smaller;
+}
+
+.focused {
+    background-color: var(--accent-color-contrast);
+}

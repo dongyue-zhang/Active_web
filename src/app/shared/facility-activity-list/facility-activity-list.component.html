@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="page_title">Activities</h1>
+    @if (facilityState) {
+    <h2 class="page_title">{{ facilityState.facility.title}}</h2>
+    <mat-divider></mat-divider>
+    @if (facilityState.activities.length !== 0) {
+
+    @for(activity of facilityState.activities; track activity.categoryName;) {
+    <mat-grid-list cols="2" rowHeight="2:1" [gutterSize]="gutterSize">
+        <h3 class="page_title">{{activity.categoryName}}</h3>
+        @for(type of activity.types; track type.type.id;) {
+        <mat-grid-tile colspan="1" style="width: 100%;">
+            <app-grid-item [title]="type.type.title" [id]="type.type.id"
+                [url]="getUrl(activity.categoryName, type.type.id)" style="width: 100%; height:100%"></app-grid-item>
+        </mat-grid-tile>
+        }
+    </mat-grid-list>
+    }
+    }
+    @else {
+    <div class="no_more_times">
+        <p>No more available times</p>
+    </div>
+
+    }
+    }
+    @else {
+    <h2>Loading...</h2>
+    }
+
+</div>

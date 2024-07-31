@@ -1,0 +1,85 @@
+<div class="container">
+    @if (facility) {
+    <h1 class="page_title">{{facility.title}}</h1>
+    <div class="contact_container">
+        <h2 class="page_title">Contact</h2>
+        <div class="contact">
+            <div>
+                <mat-icon>mail_outline</mat-icon>
+            </div>
+            <div class="contact_text">
+                {{facility.email}}
+            </div>
+        </div>
+
+        <div class="contact">
+            <div>
+                <mat-icon>call</mat-icon>
+            </div>
+            <div class="contact_text">
+                {{facility.phone}}
+            </div>
+        </div>
+
+        <div class="contact">
+            <div>
+                <mat-icon>
+                    language
+                </mat-icon>
+            </div>
+            <div class="contact_text">
+                <a href="{{facility.url}}" target="_blank">
+                    {{facility.url | urlSplit}}
+                </a>
+            </div>
+        </div>
+
+        <div class="location_info">
+            <div class="contact">
+                <mat-icon>
+                    place
+                </mat-icon>
+                <div class="contact_text">
+                    {{facility.address.street}}
+                </div>
+            </div>
+
+            @if (duration) {
+            <div class="contact">
+                <div>
+                    <mat-icon>
+                        directions_car
+                    </mat-icon>
+                </div>
+                <div class="contact_text">
+                    {{duration}}
+                </div>
+            </div>
+            }
+
+        </div>
+        <div #map>
+            <app-map [origin]="direction.origin" [destination]="direction.destination"
+                (duration)="setDuration($event)"></app-map>
+        </div>
+    </div>
+
+
+    <a (click)="browseActivities()">
+        <div class="browse_button contact space-between">
+            <div>
+                Browse Activities at {{facility.title}}
+            </div>
+            <div>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </div>
+        </div>
+    </a>
+
+
+    }
+    @else {
+    <p> Please choose a facility.</p>
+    }
+
+</div>

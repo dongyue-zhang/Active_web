@@ -1,0 +1,29 @@
+<div role="listitem" class="list_item" #list_item>
+    <a (click)="onRedirect()">
+        <div class="flex space-between">
+            <div>
+                {{activity.dayOfWeek}}, {{activity.startTime | date: "h:mm a" }} -
+                {{activity.endTime |
+                date: "h:mm a"}}
+            </div>
+            @if (activity.isAvailable) {
+            <mat-icon aria-hidden="false" fontIcon="check_circle"></mat-icon>
+            }
+        </div>
+        <div class="secondary-text">
+            {{activity.title}}
+        </div>
+        <div class="flex space-between secondary-text">
+            <div>
+                {{activity.facility.title}}
+            </div>
+            @if (showDistance) {
+            <div>
+                {{activity.facility.distance | distance}} km
+            </div>
+            }
+
+        </div>
+    </a>
+</div>
+<mat-divider></mat-divider>

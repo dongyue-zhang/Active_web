@@ -1,0 +1,57 @@
+.contact {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    margin: 5px 0;
+}
+
+.contact_text {
+    margin-left: 10px;
+}
+
+mat-icon {
+    align-self: center;
+}
+
+a,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration-line: underline;
+}
+
+#map {
+    height: 500px;
+    width: 500px;
+}
+
+.location_info {
+    display: flex;
+    justify-content: space-between;
+    /* padding-top: 1rem; */
+}
+
+.browse_button {
+    font-size: large;
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.facility_detail_container {
+    width: 500px;
+    margin: 0 auto;
+    align-self: center;
+    justify-self: center;
+}
+
+@media screen and (max-width: 787px) {
+
+    .facility_detail_container {
+        width: 100%;
+    }
+}

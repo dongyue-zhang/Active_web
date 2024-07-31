@@ -1,0 +1,80 @@
+.inifinite_scroll {
+    height: 80vh;
+    /* width: 500px; */
+    /* border: 1px solid black; */
+    border: none;
+
+}
+
+.div {
+    height: 100%;
+    width: 100%;
+    scrollbar-width: thin;
+    overflow-y: scroll;
+}
+
+app-facility-list-item:hover {
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.focused {
+    background-color: var(--accent-color-contrast);
+}
+
+.mat-mdc-button:not(:disabled) {
+    /* color: primary; */
+    border-radius: 15px;
+    /* border: 1px var(--accent-color-contrast) solid; */
+    border: none;
+
+    /* color: var(--accent-color); */
+    width: fit-content;
+}
+
+.sorting_buttons {
+    margin: 0 10px;
+}
+
+.sorting_buttons.focused {
+    background-color: var(--primary-color);
+    color: white !important;
+    border: 1px var(--primary-color) solid !important;
+}
+
+.sorting_container {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.sorting_container label {
+    font-size: small;
+}
+
+.infinite_scroll_inner_container {
+    padding-bottom: 60px;
+}
+
+.facility_list_container,
+.mat-grid-title-content {
+    position: sticky;
+    top: 0;
+}
+
+@media screen and (min-width: 787px) {
+    .facility_list_container {
+        border-right: 1px var(--accent-color-contrast) solid;
+    }
+}
+
+.facility_list_container {
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.focused {
+    background-color: firebrick;
+}

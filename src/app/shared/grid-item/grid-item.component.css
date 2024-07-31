@@ -1,0 +1,61 @@
+.grid_item {
+    /* height: 90%;
+    width: 90%; */
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    font-size: large;
+    justify-items: left;
+    text-align: left;
+    word-break: break-word;
+    transition: transform 0.3s ease;
+}
+
+.grid_item:focus {
+    transform: scale(1.1);
+    box-shadow: rgba(255, 255, 255, 0.471) 0px -50px 36px -28px inset;
+}
+
+@media screen and (max-width: 787px) {
+    .grid_item {
+        height: 100%;
+        width: 100%;
+    }
+
+    .button_container {
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 787px) {
+    .grid_item {
+        height: 90%;
+        width: 90%;
+    }
+
+    .button_container {
+        height: 100px;
+    }
+}
+
+.button_container {
+    /* height: 100px; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-grid-tile-content {
+    height: 100px;
+}
+
+.grid_item:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

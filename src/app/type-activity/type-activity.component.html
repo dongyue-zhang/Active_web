@@ -1,0 +1,17 @@
+<!-- <mat-grid-list [cols]="cols" rowHeight="100vh"> -->
+<!-- <mat-grid-tile [colspan]="left_cols" rowspan="1" class="desktop"> -->
+<div class="component_container">
+    <div class="left_container">
+        @if (mode === 'activity') {
+        <app-type-list [cols]="left_cols"></app-type-list>
+        }
+        @else if (mode === 'popular') {
+        <app-category-list [cols]="left_cols"></app-category-list>
+        }
+    </div>
+    <div class="right_container">
+        <!-- @if (typeName) { -->
+        <app-activity-list></app-activity-list>
+        <!-- } -->
+    </div>
+</div>

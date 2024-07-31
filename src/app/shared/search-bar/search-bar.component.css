@@ -1,0 +1,122 @@
+.header-container {
+    /* display: flex;
+    align-items: center; */
+    display: block;
+    flex-wrap: wrap;
+    /* width: 95%; */
+    position: relative;
+    height: 100%;
+    margin: auto;
+    height: 40px;
+}
+
+.logo-container {
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.logo {
+    display: flex;
+    align-content: center;
+    height: fit-content;
+}
+
+.search-field,
+.search-icon {
+    display: flex;
+
+}
+
+.search-field {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    border-radius: 10px;
+    border: none;
+    justify-content: center;
+    background-color: var(--accent-color-contrast);
+    height: 40px;
+    align-content: center;
+}
+
+.search-input-container {
+    background: none;
+    width: 100%;
+    display: flex;
+    align-content: center;
+}
+
+.search-input-container input {
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: 0px;
+    font-size: 1rem;
+    align-self: center;
+}
+
+.button-container {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin: 0 5px;
+    color: var(--accent-color);
+}
+
+.cancel-button-container {
+    min-width: 20px;
+    width: 5%;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin: 0 5px;
+}
+
+
+.header-container button {
+    background: none;
+    border: none;
+    width: 100%;
+    font-size: 1rem;
+    padding: 0px;
+}
+
+button:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.search-icon {
+    width: 5%;
+}
+
+.icon {
+    width: 75%;
+}
+
+input:focus {
+    border: 0px;
+    outline-style: none;
+}
+
+.result-list-container {
+    position: absolute;
+    z-index: 5 !important;
+    background-color: var(--accent-color-contrast);
+    border: 0;
+
+    padding: 35px 10px 0 10px;
+    top: 0;
+    width: 96%;
+    border-radius: 24px;
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.result-list>mat-list-item {
+    transition: all .5s ease;
+}

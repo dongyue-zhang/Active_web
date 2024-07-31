@@ -1,0 +1,26 @@
+.footer_container,
+footer {
+    height: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--accent-color);
+    font-size: smaller;
+}
+
+.footer {
+    padding-right: 20px;
+}
+
+.footer_container {
+    border-top: 1px var(--accent-color-contrast) solid;
+}
+
+.mat-icon {
+    font-size: medium;
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    justify-self: center;
+}

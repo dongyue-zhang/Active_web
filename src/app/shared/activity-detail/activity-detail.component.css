@@ -1,0 +1,103 @@
+.category_title {
+    color: var(--accent-color);
+    font-weight: 400;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.contact_text {
+    margin-left: 10px;
+}
+
+mat-icon {
+    align-self: center;
+}
+
+a,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+    color: rgb(0, 0, 138);
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration-line: underline;
+}
+
+#map {
+    height: 500px;
+    width: calc(100%);
+}
+
+.loaction_info {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(0, 0, 138);
+    ;
+}
+
+.reserve_button {
+    padding-top: 1rem;
+    font-size: large;
+    font-weight: 500;
+}
+
+
+.is_available {
+    border-radius: 10px;
+    color: white;
+    background-color: green;
+    padding: 5px;
+    font-size: x-small;
+}
+
+.updated {
+    color: var(--accent-color);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: x-small;
+}
+
+/* .updated>div {
+    display: flex;
+    align-items: center;
+    align-content: center;
+} */
+
+.updated mat-icon {
+    font-size: small;
+    text-align: center;
+    /* margin: auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.available_updated {
+    margin: 20px 0;
+}
+
+@media screen and (max-width: 787px) {
+    .no_available_activities {
+        margin: 200px auto;
+    }
+}
+
+@media screen and (min-width: 787px) {
+    .no_available_activities {
+        margin: 300px auto;
+    }
+}
+
+.no_available_activities {
+    color: var(--accent-color);
+    width: fit-content;
+}
