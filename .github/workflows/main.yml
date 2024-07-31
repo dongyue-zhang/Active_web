@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SERVER_PASSWORD }}
-          source: "./dist/"
+          source: "./dist"
           target: "~/active/"
 
       - name: Connect to server
