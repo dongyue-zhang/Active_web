@@ -31,7 +31,8 @@
             ],
             "outputPath": "dist",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
+            "aot": true,
             "polyfills": [
               "zone.js"
             ],
@@ -39,13 +40,18 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest",
               "src/manifest.webmanifest"
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/@angular/material/core/_core.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -68,8 +74,14 @@
                   "maximumError": "4kb"
                 }
               ],
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "outputHashing": "all",
-              "serviceWorker": "ngsw-config.json"
+              "serviceWorker": true
             },
             "development": {
               "optimization": false,
@@ -82,9 +94,7 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "customWebpackConfig": {
-              "path": "./webpack.config.js"
-            }
+            "buildTarget": "active:build"
           },
           "configurations": {
             "production": {

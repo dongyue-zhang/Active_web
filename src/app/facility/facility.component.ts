@@ -5,13 +5,12 @@ import { FacilityDetailComponent } from '../shared/facility-detail/facility-deta
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map } from 'rxjs';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @Component({
   selector: 'app-facility',
   standalone: true,
-  imports: [SearchBarComponent, FacilityListComponent, FacilityDetailComponent, MatGridListModule, FlexLayoutModule],
+  imports: [SearchBarComponent, FacilityListComponent, FacilityDetailComponent, MatGridListModule],
   templateUrl: './facility.component.html',
   styleUrl: './facility.component.css',
   exportAs: 'FacilityComponent'

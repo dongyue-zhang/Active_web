@@ -264,7 +264,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
     if (this.mode === 'activity') {
       return [this.CATEGORY_PATH, this.categoryId.toString(), this.TYPE_PATH, this.typeId.toString(), this.ACTIVITY_PATH, activityId.toString()];
     } else if (this.mode === 'facility') {
-      return [this.FACILITY_PATH, this.facilityId.toString(), this.CATEGORY_PATH, this.category, this.TYPE_PATH, this.typeId.toString(), this.ACTIVITY_PATH, activityId.toString()];
+      return [this.FACILITY_PATH, this.facilityId.toString(), 'category', this.category, this.TYPE_PATH, this.typeId.toString(), this.ACTIVITY_PATH, activityId.toString()];
     } else {
       return [this.CATEGORY_PATH, this.category, this.TYPE_PATH, this.typeId.toString(), this.ACTIVITY_PATH, activityId.toString()];
     }

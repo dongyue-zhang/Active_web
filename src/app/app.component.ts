@@ -65,7 +65,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         resolve(null);
 
       }
-      resolve(null);
+      // resolve(null);
       this.loading = false;
     }).then(location => {
       this.store.dispatch(setLocation({ location }))
