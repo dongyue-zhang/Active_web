@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-builders/custom-webpack": "^18.0.0",
     "@angular/animations": "^18.1.2",
     "@angular/cdk": "^18.1.2",
     "@angular/common": "^18.1.2",
