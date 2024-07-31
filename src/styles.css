@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import './custom-theme.scss';
+/* @import './custom-theme.scss'; */
+:root {
+    --secodary-text-color: rgba(0, 0, 0, 0.54);
+    --primary-color: #2350cc;
+    --primary-color-contrast: #c0dbf3;
+    --primary-color-background: #E3F2FD;
+    --accent-color: #616161;
+    --accent-color-contrast: #EEEEEE;
+    --warn-color: #D50000;
+}
 
 html,
 body {

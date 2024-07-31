@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: dist/browser
+          path: dist/
 
       
 
@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SERVER_PASSWORD }}
-          source: "./dist/browser/"
+          source: "./dist/"
           target: "~/active/"
 
       - name: Connect to server
@@ -61,7 +61,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            cp -r ~/active/dist/browser/* /var/www/apps/active/
+            cp -r ~/active/dist/* /var/www/apps/active/
 
 
 # name: Replace Server Build
