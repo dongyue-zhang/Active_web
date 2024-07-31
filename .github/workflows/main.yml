@@ -6,14 +6,43 @@ on:
       - master
 
 jobs:
-  copy_build_to_server:
+  build:
     runs-on: ubuntu-latest
     environment: production
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x] 
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build-prod
+
+      - name: Upload production-ready build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: dist/browser
+
+      
+
+  replace_build_content:
+    runs-on: ubuntu-latest
+    needs: build
+    environment: production
+
+    steps:
       - name: Connect to server and copy source code
         uses: appleboy/scp-action@v0.1.3
         with:
@@ -22,14 +51,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SERVER_PASSWORD }}
           source: "./dist/browser/"
-          target: "~/active/web/build/"
+          target: "~/active/"
 
-  replace_build_content:
-    runs-on: ubuntu-latest
-    needs: copy_build_to_server
-    environment: production
-
-    steps:
       - name: Connect to server
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -38,7 +61,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            cp -r ~/active/web/build/dist/browser/* /var/www/apps/active/
+            cp -r ~/active/dist/browser/* /var/www/apps/active/
 
 
 # name: Replace Server Build
