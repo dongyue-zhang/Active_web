@@ -50,7 +50,7 @@ jobs:
     steps:
 
       - name: List build directory before SCP
-        run: ls -alh dist/
+        run: ls -alh .
 
       - name: Connect to server and copy source code
         uses: appleboy/scp-action@v0.1.3
@@ -59,7 +59,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ${{ secrets.SERVER_PASSWORD }}
-          source: "dist/*"
+          source: "./dist/*"
           target: "~/active/"
 
       - name: Connect to server
