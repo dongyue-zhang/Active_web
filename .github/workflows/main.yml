@@ -28,12 +28,15 @@ jobs:
 
       - name: Build Angular app
         run: npm run build-prod
+      
+      - name: List build directory
+        run: ls -alh dist/
 
       - name: Upload production-ready build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: dist/
+          path: dist
 
   replace_build_content:
     runs-on: ubuntu-latest
