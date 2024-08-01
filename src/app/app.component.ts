@@ -46,7 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   initLoading() {
     new Promise<Location>(async (resolve, reject) => {
       const permissionStatus = await navigator.permissions.query({ name: 'geolocation' });
-
+      console.log(permissionStatus);
       if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
 
         navigator.geolocation.getCurrentPosition((position) => {
@@ -55,6 +55,7 @@ export class AppComponent implements OnInit, AfterViewInit {
               lng: position.coords.longitude,
               lat: position.coords.latitude
             }
+            console.log(location)
             resolve(location);
           }
         })
