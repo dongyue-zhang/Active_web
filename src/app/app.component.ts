@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             lng: position.coords.longitude,
             lat: position.coords.latitude
           }
-
+          resolve(location);
         }
         )
       } else if (permissionStatus.state === 'prompt') {
@@ -66,12 +66,14 @@ export class AppComponent implements OnInit, AfterViewInit {
             lat: position.coords.latitude
           }
 
-          console.log("prompt" + location)
+          console.log("prompt" + location.lat)
+          resolve(location);
         }
         )
 
+      } else {
+        resolve(null);
       }
-      resolve(location);
       this.loading = false;
     }).then(location => {
       this.store.dispatch(setLocation({ location }))
