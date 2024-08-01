@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { DataService } from './store/data.service';
 import { Store } from '@ngrx/store';
 import { AppState, Location } from './store/reducer';
 import { setLocation } from './store/actions';
-import { NgToastService, ToasterPosition } from 'ng-angular-popup';
+import { NgToastService, ToastType } from 'ng-angular-popup';
+import { ToasterPosition } from 'ng-toasty';
 import { filter, take } from 'rxjs';
 import { isEmpty } from 'lodash';
 
@@ -15,10 +16,12 @@ import { isEmpty } from 'lodash';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'active';
   loading = true;
-  ToasterPosition = ToasterPosition;
+  ToasterPosition = ToasterPosition.TOP_RIGHT;
+  ToastType = ToastType;
   toastMassege = "Please allow location access to get personalized services.";
+  private toast = inject(NgToastService);
 
-  constructor(private dataService: DataService, private store: Store<AppState>, private toast: NgToastService) {
+  constructor(private dataService: DataService, private store: Store<AppState>) {
 
   }
 
@@ -36,9 +39,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       take(1)
     ).subscribe(
       location => {
-        console.log(location)
         if (isEmpty(location)) {
-          this.toast.info(this.toastMassege, "INFO", 10000)
+          this.toast.info(this.toastMassege, "INFO", 10000);
         }
       }
     )
@@ -47,10 +49,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   initLoading() {
     new Promise<Location>(async (resolve, reject) => {
       const permissionStatus = await navigator.permissions.query({ name: 'geolocation' });
-      console.log(permissionStatus);
       let location = null;
-      if (permissionStatus.state === 'granted') {
-        console.log('granted');
+      if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
         navigator.geolocation.getCurrentPosition((position) => {
           location = {
             lng: position.coords.longitude,
@@ -59,17 +59,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         }
         )
-      } else if (permissionStatus.state === 'prompt') {
-        console.log('prompt')
-        navigator.geolocation.getCurrentPosition((position) => {
-          location = {
-            lng: position.coords.longitude,
-            lat: position.coords.latitude
-          }
-          console.log(location)
-        }
-        )
-
       }
       resolve(location);
       this.loading = false;
