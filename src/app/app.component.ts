@@ -47,29 +47,31 @@ export class AppComponent implements OnInit, AfterViewInit {
     new Promise<Location>(async (resolve, reject) => {
       const permissionStatus = await navigator.permissions.query({ name: 'geolocation' });
       console.log(permissionStatus);
+      let location = null;
       if (permissionStatus.state === 'granted') {
         console.log('granted');
         navigator.geolocation.getCurrentPosition((position) => {
-          const location = {
+          location = {
             lng: position.coords.longitude,
             lat: position.coords.latitude
           }
-          console.log(location)
-          resolve(location);
+
         }
         )
       } else if (permissionStatus.state === 'prompt') {
         console.log('prompt')
         navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position)
-        }
+          location = {
+            lng: position.coords.longitude,
+            lat: position.coords.latitude
+          }
+          console.log(location)
 
+        }
         )
 
-      } else {
-        console.log("dsdf")
-        resolve(null);
       }
+      resolve(location);
       this.loading = false;
     }).then(location => {
       this.store.dispatch(setLocation({ location }))
