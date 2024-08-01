@@ -36,6 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       take(1)
     ).subscribe(
       location => {
+        console.log(location)
         if (isEmpty(location)) {
           this.toast.info(this.toastMassege, "INFO", 10000)
         }
@@ -66,7 +67,6 @@ export class AppComponent implements OnInit, AfterViewInit {
             lat: position.coords.latitude
           }
           console.log(location)
-
         }
         )
 
