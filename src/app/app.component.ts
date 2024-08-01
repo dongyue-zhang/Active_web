@@ -45,6 +45,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   initLoading() {
     new Promise<Location>(async (resolve, reject) => {
+      const permissions = await navigator.permissions;
+      console.log(permissions)
+      console.log("called");
       const permissionStatus = await navigator.permissions.query({ name: 'geolocation' });
       console.log(permissionStatus);
       if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
