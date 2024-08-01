@@ -57,10 +57,10 @@ jobs:
             cp -r ~/active/dist/* /var/www/apps/active/
 
       # - name: Upload production-ready build artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: dist/
+        # uses: actions/upload-artifact@v2
+        # with:
+        #   name: build
+        #   path: dist/
 
   # replace_build_content:
 #     runs-on: ubuntu-latest
