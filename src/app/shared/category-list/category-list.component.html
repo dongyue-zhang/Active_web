@@ -16,7 +16,6 @@
 
     <h2 class="page_title">Popular Activities</h2>
     <mat-grid-list [cols]="cols" rowHeight="16:9" gutterSize="5px">
-        <!-- <mat-grid-tile [colspan]="cols">Popular Activities</mat-grid-tile> -->
         @for (type of popularTypes; track type.id) {
         <mat-grid-tile colspan="1">
             <app-grid-item [id]="type.id" [title]="type.title" [url]="getPopUrl(type)"
@@ -25,14 +24,3 @@
         }
     </mat-grid-list>
 </div>
-
-
-
-<!-- <mat-grid-list cols="4" rowHeight="2:1" class="type-list-grid">
-    <mat-grid-tile colspan="4">Popular Activities</mat-grid-tile>
-    @for (type of popularTypes; track type.id) {
-    <mat-grid-tile colspan="1">
-        <app-grid-item [id]="type.id" [title]="type.title" [url]="getPopUrl(type)"></app-grid-item>
-    </mat-grid-tile>
-    }
-</mat-grid-list> -->

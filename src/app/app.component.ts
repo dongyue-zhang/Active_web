@@ -44,9 +44,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   initLoading() {
-    new Promise<Location>((resolve, reject) => {
-      // try {
-      if (navigator.geolocation) {
+    new Promise<Location>(async (resolve, reject) => {
+      const permissionStatus = await navigator.permissions.query({ name: 'geolocation' });
+
+      if (permissionStatus.state === 'granted' || permissionStatus.state === 'prompt') {
+
         navigator.geolocation.getCurrentPosition((position) => {
           if (position) {
             const location = {
@@ -56,16 +58,10 @@ export class AppComponent implements OnInit, AfterViewInit {
             resolve(location);
           }
         })
-      }
-      // } catch (error) {
-      //   resolve(null);
-      // }
 
-      else {
+      } else {
         resolve(null);
-
       }
-      // resolve(null);
       this.loading = false;
     }).then(location => {
       this.store.dispatch(setLocation({ location }))
