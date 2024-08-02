@@ -89,8 +89,13 @@ export class SearchBarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.searchSub.unsubscribe();
-    this.searchChangeSub.unsubscribe();
+    if (this.searchSub) {
+      this.searchSub.unsubscribe();
+    }
+    if (this.searchChangeSub) {
+      this.searchChangeSub.unsubscribe();
+    }
+
   }
 
   ngAfterViewInit(): void {

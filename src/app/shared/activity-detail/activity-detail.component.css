@@ -1,6 +1,7 @@
 .category_title {
     color: var(--accent-color);
     font-weight: 400;
+    margin-top: 10px;
 }
 
 .contact {
@@ -82,7 +83,7 @@ a:hover {
 }
 
 .available_updated {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 @media screen and (max-width: 787px) {
