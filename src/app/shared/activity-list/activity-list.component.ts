@@ -116,7 +116,7 @@ export class ActivityListComponent implements OnInit, OnDestroy {
     this._daysForFiltering.push('Today');
     this._daysForFiltering.push('Tomorrow');
 
-    for (var i = 2; i < 9; i++) {
+    for (var i = 2; i < 7; i++) {
       const t = new Date();
       t.setDate(today.getDate() + i);
       this._daysForFiltering.push(this.datePipe.transform(t, "EEEE"));

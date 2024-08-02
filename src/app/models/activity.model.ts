@@ -20,7 +20,8 @@ export class Activity {
 
     getDayOfWeek() {
         const today = new Date();
-        const tomorrow = new Date(today.getDate() + 1);
+        const tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1)
         let dayOfWeek;
         if (this.startTime.toLocaleDateString() === today.toLocaleDateString()) {
             dayOfWeek = "Today";
