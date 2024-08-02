@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             lat: position.coords.latitude
           }
           resolve(location);
-        }
+        }, () => resolve(null), { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
         )
       } else {
         resolve(null);
