@@ -9,7 +9,7 @@
         @for (item of categories; track item.id) {
         <mat-grid-tile colspan="1">
             <app-grid-item [title]="item.title" [id]="item.id" [url]="getUrl(item.id)"
-                style="width: 100%; z-index: 1; height: 100%;"></app-grid-item>
+                style="width: 100%; z-index: 1; height: 100%;" [icon]="item.title"></app-grid-item>
         </mat-grid-tile>
         }
     </mat-grid-list>

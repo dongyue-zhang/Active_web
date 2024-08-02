@@ -16,6 +16,7 @@ export class GridItemComponent {
   @Input() id: number;
   @Input() title: string;
   @Input() url: string | { path: string[]; queryParams: { queryParams: Object } } | string[];
+  @Input() icon: string;
 
   constructor(private router: Router, public elementRef: ElementRef) { }
   onRedirect() {

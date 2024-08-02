@@ -59,3 +59,10 @@
     transform: scale(1.1);
     cursor: pointer;
 }
+
+.category_icon {
+    width: 30px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
