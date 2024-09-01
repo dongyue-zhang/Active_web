@@ -242,6 +242,11 @@ export class ActivityListComponent implements OnInit, OnDestroy {
           this.pagenation = activities.pagenation;
         } catch (error) { }
       }
+
+      if (this.activitiesOrigin == null) {
+        this.noMoreTimes = true;
+      }
+
     });
 
     this.locationSub = this.dataService.getLocationObs().pipe(

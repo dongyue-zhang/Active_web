@@ -49,6 +49,10 @@ a:hover {
     justify-self: center;
 }
 
+.contact_title {
+    margin: 5px 0;
+}
+
 @media screen and (max-width: 787px) {
 
     .facility_detail_container {
